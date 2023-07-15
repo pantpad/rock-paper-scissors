@@ -9,10 +9,13 @@ let input = prompt("cosa scegli?");
 console.log(input);
 */
 console.info("Inizieremo ora a giocare a carta-forbice-sasso");
+alert("sei pronto?");
 
 const ROCK = 1;
 const PAPER = 2;
 const SCISSORS = 3;
+let cpuPoints = 0;
+let userPoints = 0;
 
 /* 
 getComputerChoice(), returns a string based on the random number between 1 and 3.
@@ -78,6 +81,18 @@ function getUserInput(){
     }
 }
 
+/**
+ * 
+ */
+function playRPSGame(){
+
+    while(cpuPoints < 2 && userPoints < 2){
+        playRPSRound();
+    }
+    
+    return (cpuPoints>userPoints ? alert("HAI PERSO!") : alert("HAI VINTO!"));
+}
+
 
 /**
  * playRPSRound() plays a single rock paper scissors round
@@ -87,7 +102,7 @@ function playRPSRound(){
     let cpu = getComputerChoice();
     let user = getUserInput();
 
-    return roundResult(cpu,user);
+    return `Vincitore: ${roundResult(cpu,user)}\nCPU: ${cpuPoints}\nUSER: ${userPoints}`;
     
 }
 
@@ -95,35 +110,46 @@ function playRPSRound(){
  * 
  */
 function roundResult(computerChoice,userChoice,){
+    console.log(`cpu: ${cpuPoints}`);
+    console.log(`user: ${userPoints}`);
     if(computerChoice == userChoice){
         alert("DRAW");
-        return;
+        return "DRAW";
     }
 
     if(computerChoice == ROCK){
         if(userChoice == SCISSORS){
             alert("CPU WINS\nROCK beats SCISSORS");
-            return;
+            cpuPoints++;
+            return "CPU";
         }
         alert("USER WINS\nPAPER beats ROCK");
+        userPoints++;
+        return "USER";
     }
 
     if(computerChoice == PAPER){
         if(userChoice == ROCK){
             alert("CPU WINS\nPAPER beats ROCK");
-            return;
+            cpuPoints++;
+            return "CPU";
         }
         alert("USER WINS\nSCISSORS beat PAPER");
+        userPoints++;
+        return "USER";
     }
 
     if(computerChoice == SCISSORS){
         if(userChoice == PAPER){
             alert("CPU WINS\nSCISSORS beat PAPER");
-            return;
+            cpuPoints++;
+            return "CPU";
         }
         alert("USER WINS\nROCK beats SCISSORS");
+        userPoints++;
+        return "USER";
     }
 
 }
 
-playRPSRound();
+playRPSGame();
