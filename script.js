@@ -10,6 +10,10 @@ console.log(input);
 */
 console.info("Inizieremo ora a giocare a carta-forbice-sasso");
 
+const ROCK = 1;
+const PAPER = 2;
+const SCISSORS = 3;
+
 /* 
 getComputerChoice(), returns a string based on the random number between 1 and 3.
 It uses a random number generator between 1 and 3 to select the computer choice in playing the game.
@@ -21,13 +25,13 @@ function getComputerChoice(){
     
     switch(choice){
         case 1:
-            return "rock";
+            return ROCK;
             break;
         case 2:
-            return "paper";
+            return PAPER;
             break;
         case 3:
-            return "scissors";
+            return SCISSORS;
             break;
     }
 
@@ -57,15 +61,15 @@ function getUserInput(){
     {
         case "1":
             alert("You chose Rock");
-            return "rock";
+            return ROCK;
             break;
         case "2":
             alert("You chose Paper");
-            return "paper";
+            return PAPER;
             break;
         case "3":
             alert("You chose Scissors");
-            return "scissors";
+            return SCISSORS;
             break;
         default:
             alert("You did not choose a correct item");
@@ -74,7 +78,6 @@ function getUserInput(){
     }
 }
 
-console.log(getUserInput());
 
 /**
  * playRPSRound() plays a single rock paper scissors round
@@ -82,5 +85,45 @@ console.log(getUserInput());
  * **/
 function playRPSRound(){
     let cpu = getComputerChoice();
+    let user = getUserInput();
+
+    return roundResult(cpu,user);
     
 }
+
+/**
+ * 
+ */
+function roundResult(computerChoice,userChoice,){
+    if(computerChoice == userChoice){
+        alert("DRAW");
+        return;
+    }
+
+    if(computerChoice == ROCK){
+        if(userChoice == SCISSORS){
+            alert("CPU WINS\nROCK beats SCISSORS");
+            return;
+        }
+        alert("USER WINS\nPAPER beats ROCK");
+    }
+
+    if(computerChoice == PAPER){
+        if(userChoice == ROCK){
+            alert("CPU WINS\nPAPER beats ROCK");
+            return;
+        }
+        alert("USER WINS\nSCISSORS beat PAPER");
+    }
+
+    if(computerChoice == SCISSORS){
+        if(userChoice == PAPER){
+            alert("CPU WINS\nSCISSORS beat PAPER");
+            return;
+        }
+        alert("USER WINS\nROCK beats SCISSORS");
+    }
+
+}
+
+playRPSRound();
