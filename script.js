@@ -42,3 +42,45 @@ function getRandomNumber(){
 }
 
 //console.log(getComputerChoice());
+
+
+/**
+ * getUserInput() pops a promt asking for a
+ * 
+*/
+function getUserInput(){
+    let yourchoice = prompt("Choose your item: \n1 - Rock \n2 - Paper \n3- Scissors", "1")
+
+    if(isNaN(Number(yourchoice))){yourchoice = "default";}
+
+    switch (yourchoice)
+    {
+        case "1":
+            alert("You chose Rock");
+            return "rock";
+            break;
+        case "2":
+            alert("You chose Paper");
+            return "paper";
+            break;
+        case "3":
+            alert("You chose Scissors");
+            return "scissors";
+            break;
+        default:
+            alert("You did not choose a correct item");
+            getUserInput();
+            break;
+    }
+}
+
+console.log(getUserInput());
+
+/**
+ * playRPSRound() plays a single rock paper scissors round
+ * 
+ * **/
+function playRPSRound(){
+    let cpu = getComputerChoice();
+    
+}
