@@ -152,3 +152,27 @@ function roundResult(computerChoice,userChoice,){
 }
 
 //playRPSGame();
+
+const startPlayingBtn = document.getElementById('play');
+/**
+ * function will toggle the button to hidden/block 
+ */
+
+function toggleHidden(button){
+    
+    if (button.style.display === "none"){
+        button.style.display = "block";
+    }else{
+        button.style.display = "none";
+    }
+}
+
+
+/**
+ * function will set the play button text to play game or play round 
+ */
+
+function setTextBtn(button,text){
+    button.textContent = text;
+}
+
