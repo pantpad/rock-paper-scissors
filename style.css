@@ -51,6 +51,11 @@ body{
     height: 20%;
 }
 
+.user-result,
+.cpu-result{
+    text-align: center;
+}
+
 .button-container{
     display: flex;
     justify-content: center;
