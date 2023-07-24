@@ -154,6 +154,16 @@ function roundResult(computerChoice,userChoice,){
 //playRPSGame();
 
 const startPlayingBtn = document.getElementById('play');
+const userChoices = document.querySelectorAll('.user');
+
+userChoices.forEach(choice => choice.addEventListener('click',(e) => {
+    
+    playRPSUIRound(e.target.value);
+    //playRound(), prende input cpu, prende input user, compara, segna a schermo il vincitore o il pareggio, controlla se il game e' finito, 
+    //mette a schermo bottone di play game o play round in base all'andamento del gioco
+
+}));
+
 /**
  * function will toggle the button to hidden/block 
  */
@@ -167,6 +177,14 @@ function toggleHidden(button){
     }
 }
 
+/**
+ * Function will apply toggleHidden to start / end the round 
+ */
+
+function startEndRound(){
+    let buttons = document.querySelectorAll('button');
+    buttons.forEach(button => toggleHidden(button));
+}
 
 /**
  * function will set the play button text to play game or play round 
@@ -176,3 +194,22 @@ function setTextBtn(button,text){
     button.textContent = text;
 }
 
+
+startPlayingBtn.addEventListener('click',(e) => {
+    startEndRound();
+    setTextBtn(startPlayingBtn,"Play Round");
+});
+
+/**
+ * playRPSUIRound() plays a single rock paper scissors round
+ * 
+ * **/
+function playRPSUIRound(userChoice){
+    let cpu = getComputerChoice();
+
+    //playRound(), prende input cpu, prende input user, compara, segna a schermo il vincitore o il pareggio, controlla se il game e' finito, 
+    //mette a schermo bottone di play game o play round in base all'andamento del gioco
+    console.log(cpu);
+    console.log(userChoice);
+    
+}
