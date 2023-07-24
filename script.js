@@ -9,7 +9,6 @@ let input = prompt("cosa scegli?");
 console.log(input);
 */
 console.info("Inizieremo ora a giocare a carta-forbice-sasso");
-alert("sei pronto?");
 
 const ROCK = 1;
 const PAPER = 2;
@@ -152,4 +151,4 @@ function roundResult(computerChoice,userChoice,){
 
 }
 
-playRPSGame();
+//playRPSGame();
